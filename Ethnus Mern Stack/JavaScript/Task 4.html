@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Date and Time</title>
+    <style> .t{
+        background-color: darkgreen;
+        text-align: left;
+        width: 20%;
+        padding: 10px 10px;
+        border-bottom-right-radius: 60em;
+        border-top-right-radius: 60em;
+        
+    }
+    .t h2{
+        color: white;
+        padding-left: 10px;
+
+    }
+</style>
+    <script>
+        function showDate() {
+            let today = new Date();
+            let formattedDate = `${today.getDate()}/${today.toLocaleString('default', { month: 'long' })}/${today.getFullYear()}`;
+            document.getElementById("dateDisplay").innerText = formattedDate;
+        }
+
+        function showTime() {
+            let currentTime = new Date();
+            document.getElementById("timeDisplay").innerText = currentTime.toString();
+        }
+    </script>
+</head>
+<body>
+    <div class="t">
+        <h2>Task-4</h2>
+    
+    </div>
+    <button onclick="showDate()">Show Date</button>
+    <p id="dateDisplay"></p>
+
+    <button onclick="showTime()">Show Time</button>
+    <p id="timeDisplay"></p>
+</body>
+</html>

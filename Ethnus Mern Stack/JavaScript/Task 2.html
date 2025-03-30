@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetize String</title>
+    <style> .t{
+        background-color: darkgreen;
+        text-align: left;
+        width: 10%;
+        padding: 6px 6px;
+        border-bottom-right-radius: 60em;
+        border-top-right-radius: 60em;
+        
+    }
+    .t h2{
+        color: white;
+        padding-left: 10px;
+
+    }
+</style>
+    <script>
+        function alphabetizeString() {
+            const str = document.getElementById("textInput").value;
+            if (str.trim() === "") {
+                document.getElementById("result").innerText = "Please enter a valid string.";
+                return;
+            }
+            const sortedString = str.split('').sort().join('');
+            document.getElementById("result").innerText = `Alphabetized String: ${sortedString}`;
+        }
+    </script>
+</head>
+<body>
+    <div class="t">
+        <h2>Task-2</h2>
+    
+    </div>
+    <h1>Alphabetize a String</h1>
+    <label for="textInput">Enter a string:</label>
+    <input type="text" id="textInput">
+    <button onclick="alphabetizeString()">Alphabetize</button>
+    <p id="result"></p>
+</body>
+</html>

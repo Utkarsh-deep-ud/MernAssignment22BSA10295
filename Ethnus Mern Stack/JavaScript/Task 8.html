@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form Validation</title>
+    <style>
+         .t{
+        background-color: darkgreen;
+        text-align: left;
+        width: 20%;
+        padding: 10px 10px;
+        border-bottom-right-radius: 60em;
+        border-top-right-radius: 60em;
+        
+    }
+    .t h2{
+        color: white;
+        padding-left: 10px;
+
+    }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #fbd3e9, #bb377d);
+        }
+        form {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, textarea {
+            width: 80%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        button {
+            padding: 10px 20px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="t">
+        <h2>Task-8</h2>
+    
+    </div>
+
+    <h2>Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+        <label>First Name:</label>
+        <input type="text" id="fname">
+        <span class="error" id="fnameError"></span><br>
+
+        <label>Last Name:</label>
+        <input type="text" id="lname">
+        <span class="error" id="lnameError"></span><br>
+
+        <label>Email:</label>
+        <input type="text" id="email">
+        <span class="error" id="emailError"></span><br>
+
+        <label>Password:</label>
+        <input type="password" id="password">
+        <span class="error" id="passwordError"></span><br>
+
+        <label>Re-enter Password:</label>
+        <input type="password" id="confirmPassword">
+        <span class="error" id="confirmPasswordError"></span><br>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <span class="error" id="genderError"></span><br>
+
+        <label>Age:</label>
+        <input type="number" id="age">
+        <span class="error" id="ageError"></span><br>
+
+        <label>Phone Number:</label>
+        <input type="text" id="phone">
+        <span class="error" id="phoneError"></span><br>
+
+        <label>Address:</label>
+        <textarea id="address"></textarea>
+        <span class="error" id="addressError"></span><br>
+
+        <label>State:</label>
+        <input type="text" id="state">
+        <span class="error" id="stateError"></span><br>
+
+        <label>Country:</label>
+        <select id="country">
+            <option value="">Choose your country</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+        </select>
+        <span class="error" id="countryError"></span><br>
+
+        <input type="checkbox" id="declaration"> I declare all details are correct.
+        <span class="error" id="declarationError"></span><br>
+
+        <button type="submit">REGISTER</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = true;
+
+            function showError(id, message) {
+                document.getElementById(id).innerText = message;
+                isValid = false;
+            }
+
+            document.querySelectorAll('.error').forEach(e => e.innerText = "");
+
+            let fname = document.getElementById("fname").value.trim();
+            let lname = document.getElementById("lname").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let age = document.getElementById("age").value;
+            let phone = document.getElementById("phone").value.trim();
+            let address = document.getElementById("address").value.trim();
+            let state = document.getElementById("state").value.trim();
+            let country = document.getElementById("country").value;
+            let declaration = document.getElementById("declaration").checked;
+
+            if (fname === "") showError("fnameError", "First name is required");
+            if (lname === "") showError("lnameError", "Last name is required");
+            if (email === "" || !email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) showError("emailError", "Valid email required");
+            if (password.length < 6) showError("passwordError", "Password must be at least 6 characters");
+            if (confirmPassword !== password) showError("confirmPasswordError", "Passwords do not match");
+            if (!gender) showError("genderError", "Gender is required");
+            if (age === "" || age <= 0) showError("ageError", "Valid age is required");
+            if (phone === "" || !phone.match(/^\d{10}$/)) showError("phoneError", "Valid 10-digit phone number required");
+            if (address === "") showError("addressError", "Address is required");
+            if (state === "") showError("stateError", "State is required");
+            if (country === "") showError("countryError", "Country is required");
+            if (!declaration) showError("declarationError", "You must agree to the declaration");
+
+            return isValid;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Animation</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+        }
+        img {
+            position: fixed;
+            top: 300px; /* Align the image to the bottom of the screen */
+            left: 0px;
+            width: 200px;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .t {
+            background-color: darkgreen;
+            text-align: left;
+            width: 20%;
+            padding: 10px 10px;
+            border-bottom-right-radius: 60em;
+            border-top-right-radius: 60em;
+        }
+        .t h2 {
+            color: white;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="t">
+        <h2>Task-7</h2>
+    </div>
+
+    <img id="train" src="train.png" alt="Train">
+
+    <h2 style="color:blue;">Click the following buttons to handle animation</h2>
+
+    <div class="buttons">
+        <button onclick="startTrain()">Start</button>
+        <button onclick="stopTrain()">Stop</button>
+    </div>
+
+    <script>
+        let train = document.getElementById("train");
+        let position = 0;
+        let interval;
+
+        function startTrain() {
+            if (!interval) {
+                interval = setInterval(() => {
+                    position += 5;
+                    train.style.left = position + "px";
+                    if (position > window.innerWidth) {
+                        position = -200; // Reset position when it moves out of view
+                    }
+                }, 50);
+            }
+        }
+
+        function stopTrain() {
+            clearInterval(interval);
+            interval = null;
+        }
+    </script>
+
+</body>
+</html>

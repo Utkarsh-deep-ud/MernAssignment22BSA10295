@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiply & Divide</title>
+    <style> .t{
+        background-color: darkgreen;
+        text-align: left;
+        width: 10%;
+        padding: 6px 6px;
+        border-bottom-right-radius: 60em;
+        border-top-right-radius: 60em;
+        
+    }
+    .t h2{
+        color: white;
+        padding-left: 10px;
+
+    }
+</style>
+    <script>
+        function calculate(operation) {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Please enter valid numbers.";
+            } else if (operation === 'multiply') {
+                result = num1 * num2;
+            } else if (operation === 'divide') {
+                result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
+            }
+
+            document.getElementById("result").innerText = `The Result Is: ${result}`;
+        }
+    </script>
+</head>
+<body>
+    <div class="t">
+        <h2>Task-3</h2>
+    
+    </div>
+    <label>1st Number: </label>
+    <input type="text" id="num1"><br><br>
+
+    <label>2nd Number: </label>
+    <input type="text" id="num2"><br><br>
+
+    <button onclick="calculate('multiply')">Multiply</button>
+    <button onclick="calculate('divide')">Divide</button>
+
+    <p id="result">The Result Is:</p>
+</body>
+</html>
